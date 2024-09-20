@@ -45,13 +45,20 @@ public class PageTest {
     }
 
     @Test
-    public void pageAbout() {
+    public void pageAboutOption1() {
 
         pageObjectPage.menuPage("About");
         onView(withId(R.id.about_privacy_policy_label_text_view))
                 .check(matches(withText("Privacy Policy:")));
     }
 
+    @Test
+    public void pageAboutOption2() {
+
+        pageObjectPage.menuPage("About");
+        onView(withId(R.id.about_terms_of_use_label_text_view))
+                .check(matches(withText("Terms of use:")));
+    }
     @Test
     public void pageNews() {
 
@@ -92,12 +99,21 @@ public class PageTest {
     }
 
     @Test
-    public void pageQuoteTopicPageAbout() {
+    public void pageQuoteTopicPageAboutOption1() {
 
         onView(withId(R.id.our_mission_image_button)).perform(click());
         pageObjectPage.menuPage("About");
         onView(withId(R.id.about_privacy_policy_label_text_view))
                 .check(matches(withText("Privacy Policy:")));
+    }
+
+    @Test
+    public void pageQuoteTopicPageAboutOption2() {
+
+        onView(withId(R.id.our_mission_image_button)).perform(click());
+        pageObjectPage.menuPage("About");
+        onView(withId(R.id.about_terms_of_use_label_text_view))
+                .check(matches(withText("Terms of use:")));
     }
 
     @Test

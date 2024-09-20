@@ -7,6 +7,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.firebase.crashlytics'
+    id 'io.qameta.allure' version '2.9.6'
 }
 
 android {
@@ -22,10 +23,6 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         testInstrumentationRunnerArguments clearPackageData: 'true'
     }
-
-    // testOptions {
-    //     execution 'ANDROIDX_TEST_ORHESTRATOR'
-    //  }
 
     compileOptions {
         coreLibraryDesugaringEnabled true
@@ -69,6 +66,7 @@ dependencies {
     def hilt_version = '2.41'
     def gson_version = '2.9.0'
     def swipe_refresh_version = '1.1.0'
+    def allureVersion = '2.25.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -100,6 +98,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
 
+
     implementation 'androidx.tracing:tracing:1.1.0'
 
     testImplementation 'junit:junit:4.13.2'
@@ -114,6 +113,10 @@ dependencies {
     androidTestImplementation 'io.qameta.allure:allure-kotlin-android:2.4.0'
 
     implementation 'com.github.javafaker:javafaker:1.0.2'
-    testImplementation 'io.qameta.allure:allure-testng'
 
+    testImplementation 'io.qameta.allure:allure-junit5:2.12.1'
+    implementation 'io.qameta.allure:allure-java-commons:2.12.1'
+
+    testImplementation(platform("io.qameta.allure:allure-bom:$allureVersion"))
+    testImplementation("io.qameta.allure:allure-rest-assured")
 }
